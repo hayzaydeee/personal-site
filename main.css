@@ -320,3 +320,148 @@
         font-style: italic;
       } */
   }
+
+  /* Timeline Styles */
+  .timeline-container {
+    width: 100%;
+    padding: 40px 0;
+  }
+  
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* The timeline center line */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+  }
+  
+  /* Timeline items */
+  .timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+  }
+  
+  /* Circles on timeline */
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    top: 22px;
+    z-index: 1;
+  }
+  
+  /* Left items */
+  .left {
+    left: 0;
+  }
+  
+  .left::after {
+    right: -8px;
+  }
+  
+  /* Right items */
+  .right {
+    left: 50%;
+  }
+  
+  .right::after {
+    left: -8px;
+  }
+  
+  /* Content styling */
+  .timeline-content {
+    padding: 20px 25px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timeline-date {
+    font-weight: bold;
+    color: #64ffda;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .timeline-content h3 {
+    margin: 0 0 5px 0;
+    color: white;
+    font-size: 1.2rem;
+  }
+  
+  .timeline-content h4 {
+    margin: 0 0 15px 0;
+    color: #ccd6f6;
+    font-weight: normal;
+    font-size: 1rem;
+  }
+  
+  .timeline-content p {
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+    color: #a8b2d1;
+    font-size: 0.95rem;
+  }
+  
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .skills span {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+  }
+  
+  /* Mobile responsiveness */
+  @media screen and (max-width: 768px) {
+    .timeline::after {
+      left: 31px;
+    }
+    
+    .timeline-item {
+      width: 100%;
+      padding-left: 70px;
+      padding-right: 25px;
+    }
+    
+    .timeline-item::after {
+      left: 23px;
+    }
+    
+    .left::after, .right::after {
+      left: 23px;
+    }
+    
+    .right {
+      left: 0;
+    }
+  }
