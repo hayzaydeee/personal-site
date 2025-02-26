@@ -1,0 +1,322 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer hr{
+    color: white;
+    width: 95%;
+    margin: 0.6em auto;
+  }
+  
+  footer p{
+    color: white;
+    font-size: 0.7em;
+    padding: 2em;
+    text-align: center;
+  }
+  
+  .grad-bg {
+    background: linear-gradient(303deg, #00487c, #087E8B, #032b43);
+    background-size: 600% 600%;
+  
+    animation: gradient 26s ease infinite;
+  }
+  
+  @-webkit-keyframes gradient {
+    0%{background-position:0% 53%}
+    50%{background-position:100% 58%}
+    100%{background-position:0% 53%}
+  }
+  @-moz-keyframes gradient {
+    0%{background-position:0% 53%}
+    50%{background-position:100% 58%}
+    100%{background-position:0% 53%}
+  }
+  @keyframes gradient {
+    0%{background-position:0% 53%}
+    50%{background-position:100% 58%}
+    100%{background-position:0% 53%}
+  }
+  
+  /* Brand name styles */
+  .brand {
+    position: fixed;
+    left: 1em;
+    top: 2em;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    z-index: 1000;
+    
+  }
+  
+  .brand a{
+    font-family: 'Poppins', cursive;
+    color: white;
+    text-decoration: none;
+    font-size: 1.3em;
+  }
+
+  .navbar {
+    position: fixed;
+    left: 18px;
+
+    height: 55vh;
+    width: 144px;
+    /* Center the navbar vertically */
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff26;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-radius: 1em;
+    box-shadow: 0 8px 16px #0000001a, 0 4px 4px #0000001a,
+      0 0 0 1px #ffffff33 inset;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+  }
+  
+  .menu {
+    list-style: none;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .menu li {
+    margin-bottom: 10px;
+  }
+  
+  .menu a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffffe6;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 5px 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+
+  .menu a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .menu a:hover {
+    color: #66bfbf;
+  }
+  
+  .menu a:hover::after {
+    width: 100%;
+    background-color: #66bfbf;
+  }
+  
+  .menu a.active {
+    color: #66bfbf;
+  }
+  
+  .menu a.active::after {
+    width: 100%;
+    background-color: #66bfbf;
+  }
+  
+  .resume-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 6px 10px;
+    background: #ffffff33;
+    border: 1px solid #ffffff66;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .resume-btn:hover {
+    background: #ffffff4d;
+    transform: translateY(-2px);
+  }
+  
+  .menu-toggle {
+    display: none;
+  }
+  
+  .hamburger {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1001;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ffffff33;
+    backdrop-filter: blur(5px);
+    border: 1px solid #ffffff1a;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: background 0.3s;
+  }
+  
+  .hamburger:hover {
+    background: #ffffff4d;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    margin: 2px 0;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .main-content {
+    margin-top: 6em;
+    margin-left: 180px;
+    padding: 30px;
+    width: calc(100% - 180px);
+    color: white;
+    transition: margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .intro, .intro-sub{
+    font-family: 'Preahvihear', cursive;
+    text-align: center;
+  }
+  
+  .intro-p{
+    text-align: center;
+    padding: 2em;
+  }
+
+  .intro{
+    font-size: 4em;
+    font-style: italic;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000066;
+    backdrop-filter: blur(3px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* CSS-based menu toggle functionality */
+  #menu-toggle:checked ~ .overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  #menu-toggle:checked ~ .navbar {
+    transform: translateY(-50%) translateX(0);
+  }
+  
+  #menu-toggle:checked ~ label .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(3px, 3px);
+  }
+  
+  #menu-toggle:checked ~ label .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  #menu-toggle:checked ~ label .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(3px, -3px);
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 1024px) {
+    .navbar {
+      transform: translateY(-50%) translateX(-180px);
+      left: 0;
+      height: 75vh; /* Reduced height for mobile */
+      width: 160px;
+      border-radius: 0 16px 16px 0;
+      top: 50%; /* Keep centered vertically */
+    }
+  
+    .brand {
+      left: 15px;
+      top: 15px;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+      padding: 25px 15px;
+    }
+  
+    .menu {
+      margin-top: 0;
+    }
+
+    /* .main-content {
+        margin-top: 6em;
+        margin-left: 180px;
+        padding: 30px;
+        width: calc(100% - 180px);
+        color: white;
+        transition: margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+    
+      .intro, .intro-sub{
+        font-family: 'Preahvihear', cursive;
+        text-align: center;
+      }
+      
+      .intro-p{
+        text-align: center;
+        padding: 2em;
+      }
+    
+      .intro{
+        font-size: 4em;
+        font-style: italic;
+      } */
+  }
