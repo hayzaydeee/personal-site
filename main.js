@@ -1,4 +1,3 @@
-/* filepath: /c:/Users/abeck/OneDrive/Documents/GitHub/personal-site/main.js */
 // Function to check if element is in viewport
 function isInViewport(element) {
   const rect = element.getBoundingClientRect();
