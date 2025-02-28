@@ -1,0 +1,603 @@
+/* Section Styles */
+
+/* Common Section Styling */
+.section-heading {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  color: #ccd6f6;
+  position: relative;
+}
+
+.section-heading:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #64ffda;
+  border-radius: 3px;
+}
+
+.section-intro {
+  color: #a8b2d1;
+  margin-bottom: 35px;
+  max-width: 600px;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Intro Section */
+.intro-section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3rem;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.intro-sub {
+  font-family: "Preahvihear", cursive;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.intro-p {
+  text-align: center;
+  padding: 0.5em 2em 2em;
+  color: #ffffffd9;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards 14s;
+}
+
+/* Main title styling */
+.intro {
+  font-family: "Preahvihear", sans-serif;
+  text-align: center;
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards 0.3s;
+}
+
+.intro .regular-text {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.intro .highlight-text {
+  color: #64ffda;
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 1.2s steps(14) forwards 1s;
+}
+
+.intro .highlight-text::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #64ffda33, #64ffda00);
+  bottom: 10px;
+  left: 0;
+  z-index: -1;
+  border-radius: 4px;
+}
+
+.intro .highlight-text::before {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 10%;
+  height: 80%;
+  width: 2px;
+  background-color: #64ffda;
+  animation: blink 0.8s step-end infinite, hideCursor 0.1s forwards 2.3s;
+}
+
+/* Scroll indicator in intro section - Updated for delayed reveal */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0; /* Start hidden */
+  cursor: pointer;
+  transition: opacity 0.8s ease; /* For smooth transitions */
+}
+
+/* Default visible state */
+.scroll-indicator.visible {
+  opacity: 1;
+}
+
+/* Delayed reveal animation matching navbar timing */
+.scroll-indicator.delayed-reveal {
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 14.5s; /* Slightly after navbar for sequential effect */
+}
+
+.scroll-text {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 24px;
+  border-left: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  transform: rotate(-45deg);
+  animation: bounce 2s infinite;
+}
+
+/* Skills Section */
+.skills-section {
+  margin-top: 60px;
+  padding: 20px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  margin-bottom: 60px;
+  max-width: 900px;
+  margin: 60px auto 0;
+}
+
+.skills-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.skill-category {
+  width: calc(50% - 15px);
+  margin-bottom: 10px;
+  background: #ffffff08;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px #0000000d;
+  border: 1px solid #ffffff14;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.skills-section.visible .skill-category:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.skills-section.visible .skill-category:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
+}
+
+.skills-section.visible .skill-category:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.skills-section.visible .skill-category:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.55s;
+}
+
+.skill-category h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #64ffda;
+  letter-spacing: 0.5px;
+}
+
+/* CTA Section */
+.cta-section {
+  margin: 80px 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cta-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 30px;
+  background: #ffffff0a;
+  border-radius: 10px;
+  border: 1px solid #ffffff14;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px #00000014;
+}
+
+.cta-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-family: "Preahvihear", sans-serif;
+}
+
+.cta-content p {
+  color: #ffffffcc;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Timeline Section */
+.timeline-container {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The timeline center line */
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  border-radius: 2px;
+}
+
+/* Timeline items */
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+/* Circles on timeline */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  top: 22px;
+  z-index: 1;
+}
+
+/* Left items */
+.left {
+  left: 0;
+}
+
+.left::after {
+  right: -8px;
+}
+
+/* Right items */
+.right {
+  left: 50%;
+}
+
+.right::after {
+  left: -8px;
+}
+
+/* Content styling */
+.timeline-content {
+  padding: 20px 25px;
+  background: #ffffff12;
+  border: 1px solid #ffffff1a;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: #64ffda;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.timeline-content h3 {
+  margin: 0 0 5px 0;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.timeline-content h4 {
+  margin: 0 0 15px 0;
+  color: #ccd6f6;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.timeline-content p {
+  margin: 0 0 15px 0;
+  line-height: 1.5;
+  color: #a8b2d1;
+  font-size: 0.95rem;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skills span {
+  background-color: #64ffda1a;
+  color: #64ffda;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+/* Animations used in sections */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes hideCursor {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: rotate(-45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(-45deg) translateY(8px);
+  }
+  60% {
+    transform: rotate(-45deg) translateY(4px);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 25px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    min-height: 80vh;
+  }
+
+  .intro {
+    font-size: 3rem;
+  }
+
+  .intro-sub {
+    font-size: 1.4rem;
+  }
+
+  .intro-p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .skills-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .skill-category {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .cta-section {
+    margin: 60px 10px 30px;
+  }
+
+  .cta-content {
+    padding: 25px 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Timeline mobile */
+  .timeline::after {
+    left: 31px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .timeline-item::after {
+    left: 23px;
+  }
+
+  .left::after,
+  .right::after {
+    left: 23px;
+  }
+
+  .right {
+    left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro {
+    font-size: 2.5rem;
+  }
+
+  .intro-p {
+    font-size: 0.9rem;
+  }
+
+  .intro .highlight-text::after {
+    height: 6px;
+    bottom: 6px;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .skills-section,
+  .skill-category {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Page transition overlay */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: rgba(
+    10,
+    47,
+    38,
+    0
+  ); /* Green tinted background - start transparent */
+  opacity: 0;
+  visibility: hidden; /* Make sure it's hidden by default */
+  transition: opacity 0.5s ease, background-color 0.6s ease;
+}
+
+.page-transition-overlay.visible {
+  opacity: 1;
+  visibility: visible; /* Make visible when needed */
+  background: rgba(10, 47, 38, 0.85); /* Green tinted background with opacity */
+  backdrop-filter: blur(5px);
+}
+
+.transition-page-name {
+  color: var(--primary-color);
+  font-size: 4rem;
+  font-weight: 700;
+  font-family: var(--font-accent);
+  text-shadow: 0 4px 12px rgba(100, 255, 218, 0.4);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}

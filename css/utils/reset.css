@@ -1,0 +1,77 @@
+/* CSS Reset and Base Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+  height: auto;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Typography Reset */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-accent);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all var(--transition-medium);
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+/* List Reset */
+ul, ol {
+  list-style: none;
+}
+
+/* Form Reset */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Media Reset */
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Focus Styles for Accessibility */
+:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Background Gradient */
+.grad-bg {
+  background: var(--bg-primary);
+  background-size: 600% 600%;
+  animation: gradient 26s ease infinite;
+}

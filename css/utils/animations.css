@@ -1,0 +1,360 @@
+/* Animation Utilities */
+
+/* Disable animations based on user preference for accessibility */
+@media (prefers-reduced-motion) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Background Gradient Animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 53%;
+  }
+  50% {
+    background-position: 100% 58%;
+  }
+  100% {
+    background-position: 0% 53%;
+  }
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 53%;
+  }
+  50% {
+    background-position: 100% 58%;
+  }
+  100% {
+    background-position: 0% 53%;
+  }
+}
+
+@-moz-keyframes gradient {
+  0% {
+    background-position: 0% 53%;
+  }
+  50% {
+    background-position: 100% 58%;
+  }
+  100% {
+    background-position: 0% 53%;
+  }
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Background reveal animation */
+@keyframes revealBackground {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Navbar animation */
+@keyframes navReveal {
+  0% {
+    transform: translateY(-50%) translateX(-180px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Progress bar filling animation */
+@keyframes fillProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Simple Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Simple Fade Out Animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Fade In with Slide Animation */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: rotate(-45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(-45deg) translateY(8px);
+  }
+  60% {
+    transform: rotate(-45deg) translateY(4px);
+  }
+}
+
+/* Bounce Right Animation */
+@keyframes bounceRight {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Typing Animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Blink Animation */
+@keyframes blink {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Hide Cursor Animation */
+@keyframes hideCursor {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Fill Bar Animation */
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Button Shine Effect */
+@keyframes shineEffect {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Animation Delay Utility Classes */
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+.delay-600 {
+  animation-delay: 0.6s;
+}
+.delay-700 {
+  animation-delay: 0.7s;
+}
+.delay-800 {
+  animation-delay: 0.8s;
+}
+.delay-900 {
+  animation-delay: 0.9s;
+}
+.delay-1000 {
+  animation-delay: 1s;
+}
+.delay-1500 {
+  animation-delay: 1.5s;
+}
+.delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-in,
+  .animate-fade-in-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .skills-section,
+  .skill-category {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .experience-level {
+    transition: none;
+  }
+}
+
+/* Page transition animations */
+
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0a2f26f2; /* Fully opaque green for page transition */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.page-transition-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.transition-page-name {
+  font-family: var(--font-accent);
+  font-size: 3rem;
+  color: var(--text-primary);
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.page-transition-overlay.enter-animation .transition-page-name {
+  transform: translateY(100px) scale(0.6);
+  opacity: 0.7;
+}
+
+.page-transition-overlay.enter-animation.centered .transition-page-name {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.page-transition-overlay.exit-animation .transition-page-name {
+  transform: translateY(-100px) scale(0.6);
+  opacity: 0.7;
+}
+
+.page-transition-overlay.exit-animation.centered .transition-page-name {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.page-transition-overlay.fullscreen {
+  background: #0a2f26f2; /* Fully opaque green for page transition */
+}
+
+.page-transition-overlay.exit-animation .transition-page-name {
+  transform: translate(calc(-50vw + 150px), calc(-50vh + 30px)) scale(0.4);
+  opacity: 0.7;
+}
+
+.page-transition-overlay.exit-animation.centered .transition-page-name {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.page-transition-overlay.fullscreen {
+  background: #0a2f26f2; /* Fully opaque green for page transition */
+}

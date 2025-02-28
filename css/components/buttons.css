@@ -1,0 +1,241 @@
+/* Button Styles */
+:root {
+    --btn-primary-bg: var(--primary-color-light);
+    --btn-primary-color: var(--primary-color);
+    --btn-radius: var(--radius-md);
+  }
+
+/* Resume Button */
+.resume-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 6px 10px;
+  background: #ffffff33;
+  border: 1px solid #ffffff66;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: #ffffff4d;
+  transform: translateY(-2px);
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  background: #ffffff26;
+  backdrop-filter: blur(12px) saturate(1.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px #0000001a, 0 0 0 1px #ffffff33 inset;
+  z-index: 998;
+  cursor: pointer;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #ffffff40;
+  transform: translateY(-3px);
+}
+
+.back-to-top i {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #64ffda1a, #64ffda33);
+  color: #64ffda;
+  border: 1px solid #64ffda33;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-text, .cta-icon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.cta-icon {
+  margin-left: 8px;
+  font-size: 0.9rem;
+}
+
+.cta-button:hover {
+  background: linear-gradient(90deg, #64ffda33, #64ffda4d);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px #00000029;
+}
+
+.cta-button:hover .cta-text {
+  transform: translateX(-4px);
+}
+
+.cta-button:hover .cta-icon {
+  animation: bounceRight 1s infinite;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #ffffff26, transparent);
+  transition: left 0.8s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+/* Hire Me Button */
+.hire-me-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #64ffda1a, #64ffda33);
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px #64ffda26;
+}
+
+.hire-text, .hire-icon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.hire-icon {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.hire-me-button:hover {
+  background: linear-gradient(90deg, #64ffda33, #64ffda4d);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px #64ffda40;
+}
+
+.hire-me-button:hover .hire-text {
+  transform: translateX(-4px);
+}
+
+.hire-me-button:hover .hire-icon {
+  transform: scale(1.2);
+}
+
+.hire-me-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #ffffff33, transparent);
+  transition: left 0.8s ease;
+}
+
+.hire-me-button:hover::before {
+  left: 100%;
+}
+
+.hire-me-container {
+  margin: 25px 0;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 14s; /* Adjusted from 14s to 5s for better UX */
+}
+
+/* Download Button in Resume Modal */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #64ffda1a;
+  color: #64ffda;
+  border: 1px solid #64ffda33;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: #64ffda33;
+  transform: translateY(-2px);
+}
+
+.download-btn i {
+  margin-right: 8px;
+}
+
+/* Key animations used by buttons */
+@keyframes bounceRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .hire-me-button {
+    padding: 10px 24px;
+    font-size: 1rem;
+  }
+  
+  .hire-me-container {
+    margin: 20px 0;
+  }
+}

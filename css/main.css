@@ -1,0 +1,109 @@
+/* utilities */
+@import 'utils/variables.css';
+@import 'utils/reset.css';
+@import 'utils/animations.css';
+
+/* components*/
+@import "components/buttons.css";
+@import "components/footer.css";
+@import "components/modal.css";
+@import "components/navbar.css";
+@import "components/sections.css";
+@import 'components/skills.css';
+
+/* page-specific styles */
+@import 'pages/home.css';
+@import 'pages/about.css';
+@import 'pages/work.css';
+@import 'pages/contact.css';
+@import 'pages/fun.css';
+
+
+/* Global styles */
+body {
+  font-family: var(--font-main);
+  min-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.grad-bg {
+  background: var(--bg-primary);
+  background-size: 600% 600%;
+  animation: gradient 26s ease infinite;
+  position: relative;
+  z-index: -2;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+.main-content {
+  margin-top: 6em;
+  padding-bottom: 40px;
+}
+
+/* Common heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-accent);
+  margin-bottom: var(--space-md);
+}
+
+/* Link styles */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all var(--transition-medium) ease;
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Minimal styling for section intros */
+.section-intro {
+  color: var(--text-tertiary);
+  margin-bottom: 35px;
+  max-width: 600px;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Media queries for global elements */
+@media (max-width: 480px) {
+  .section-intro {
+    font-size: 0.85rem;
+  }
+}
+
+/* Progress indicator */
+.reveal-progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--primary-color);
+  z-index: 9999;
+  opacity: 0.7;
+  width: 0%;
+  animation: fillProgress 15s linear forwards;
+}
+
+@keyframes fillProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

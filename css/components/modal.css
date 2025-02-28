@@ -1,0 +1,120 @@
+/* Modal Styles */
+
+/* Modal container */
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #047692;
+  margin: auto;
+  padding: 25px;
+  border: 1px solid #087E8B;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  max-height: 90vh;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.modal:target .modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Close button */
+.close-modal {
+  color: #8892b0;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-modal:hover {
+  color: #ff6b6b;
+  transform: rotate(90deg);
+}
+
+/* Modal heading */
+.modal-content h2 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #ccd6f6;
+  font-family: 'Preahvihear', sans-serif;
+  font-size: 1.5rem;
+}
+
+/* Resume container inside modal */
+.resume-container {
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.resume-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+
+.modal:target .resume-container iframe {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal actions section (for buttons) */
+.modal-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px 15px;
+  }
+  
+  .resume-container {
+    height: 60vh;
+  }
+  
+  .close-modal {
+    font-size: 24px;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+}

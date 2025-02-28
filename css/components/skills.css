@@ -1,0 +1,192 @@
+/* filepath: /c:/Users/abeck/OneDrive/Documents/GitHub/personal-site/css/components/skills.css */
+/* Skills Component Styles */
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+  }
+  
+  .skill-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+    padding-bottom: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    cursor: pointer;
+  }
+  
+  .skill-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--primary-color-lighter);
+    color: var(--primary-color);
+    border-radius: 15px;
+    font-size: 0.85rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    margin-right: 10px;
+    flex: 0 0 auto;
+    min-width: 100px;
+    position: relative;
+  }
+  
+  .skill-tag:hover {
+    background: var(--primary-color-light);
+  }
+  
+  .skill-list li:hover .skill-tag {
+    transform: translateX(2px);
+  }
+  
+  .experience-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    flex: 1;
+    position: relative;
+    min-width: 100px;
+    display: block;
+    overflow: hidden;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .experience-level {
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(100, 255, 218, 0.5),
+      rgba(100, 255, 218, 0.8)
+    );
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 0 !important;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .skill-list li:hover .experience-level,
+  .skill-list li.active-skill .experience-level {
+    width: var(--skill-level) !important;
+  }
+  
+  .percent-indicator {
+    position: absolute;
+    right: 0;
+    top: -20px;
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    background: rgba(10, 25, 47, 0.6);
+    padding: 1px 6px;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+  }
+  
+  .skill-list li:hover .percent-indicator,
+  .skill-list li.active-skill .percent-indicator {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .skill-list li:hover .percent-indicator {
+    animation: pulse 1.5s infinite;
+  }
+  
+  /* First-use tooltip */
+  .skill-category:first-child .skill-list li:first-child::before {
+    content: "hover/click to see skill level!";
+    position: absolute;
+    top: -25px;
+    left: 60%;
+    transform: translateX(-50%);
+    background: rgba(10, 25, 47, 0.7);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #ccd6f6;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  
+  .skills-section.visible
+    .skill-category:first-child
+    .skill-list
+    li:first-child::before {
+    opacity: 0.8;
+    animation: fadeOut 5s forwards 2s;
+  }
+  
+  /* Staggered animation for skill items */
+  .skills-section.visible .skill-list li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .skill-list li:nth-child(1) { transition-delay: 0.1s; }
+  .skill-list li:nth-child(2) { transition-delay: 0.2s; }
+  .skill-list li:nth-child(3) { transition-delay: 0.3s; }
+  .skill-list li:nth-child(4) { transition-delay: 0.4s; }
+  .skill-list li:nth-child(5) { transition-delay: 0.5s; }
+  .skill-list li:nth-child(6) { transition-delay: 0.6s; }
+  
+  /* Media queries */
+  @media (min-width: 769px) {
+    .skill-tag {
+      width: 140px;
+      flex-shrink: 0;
+    }
+  
+    .experience-bar {
+      flex: 1;
+      margin-left: 15px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .skill-category:first-child .skill-list li:first-child::before {
+      top: -30px;
+    }
+    
+    .skill-list li {
+      margin-bottom: 15px;
+    }
+  
+    .skill-tag {
+      margin-bottom: 6px;
+      width: 100%;
+    }
+  
+    .experience-bar {
+      width: 100%;
+    }
+    
+    .skills-container {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .skill-category {
+      width: 80%; /* As requested for mobile */
+      padding: 15px;
+      margin: 0 auto; /* Center the skill category */
+    }
+  }

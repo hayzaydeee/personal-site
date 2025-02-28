@@ -6,7 +6,7 @@
 
     <title>Divine Eze | Work</title>
 
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="css/main.css" />
 
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,7 +52,7 @@
           <li><a href="contact.html">contact</a></li>
           <li><a href="fun.html">fun</a></li>
         </ul>
-        <a href="" class="resume-btn">résumé</a>
+        <a href="" class="resume-btn" id="resume-btn">résumé</a>
       </nav>
 
       <!-- Main Content -->
@@ -116,5 +116,21 @@
         Divine Eze version 1.00 . All rights reserved. © 2025 hayzaydee
       </p>
     </footer>
+
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <div id="resume-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>my résumé</h2>
+        <div class="resume-container">
+          <iframe src="media/Divine's CVV.pdf" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
   </body>
 </html>

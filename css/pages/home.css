@@ -1,0 +1,13 @@
+.dark-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #061019; /* Dark blue-black color */
+  z-index: -1; /* Behind content but above gradient */
+  opacity: 1;
+  pointer-events: none; /* Don't block clicks */
+  animation: revealBackground 2s ease-in-out forwards;
+  animation-delay: 14s; /* Wait 15 seconds before starting fade */
+}

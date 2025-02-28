@@ -3,10 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Divine Eze - Web Developer specializing in responsive, accessible web applications with expertise in JavaScript, Node.js, and React.">
+    <meta name="keywords" content="web developer, frontend developer, JavaScript developer, Divine Eze">
+    
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="Divine Eze | Web Developer">
+    <meta property="og:description" content="Web Developer with expertise in building responsive, user-friendly applications">
+    <meta property="og:image" content="https://yourdomain.com/media/og-image.jpg">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta name="twitter:card" content="summary_large_image">
 
     <title>Divine Eze | Home</title>
 
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="css/main.css" />
 
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,8 +71,8 @@
       <label for="menu-toggle" class="overlay"></label>
 
       <!-- Floating Navbar (now without logo) -->
-      <nav class="navbar" id="navbar">
-        <ul class="menu">
+      <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <ul class="menu" role="menubar">
           <li><a href="index.html" class="active">home</a></li>
           <li><a href="work.html">work</a></li>
           <li><a href="about.html">about</a></li>
@@ -80,7 +89,7 @@
           <h2 class="intro-sub">hi, i'm Divine,</h2>
           <h1 class="intro">
             <span class="regular-text">i'm a </span>
-            <span class="highlight-text">web developer</span>
+            <span class="highlight-text"></span>
           </h1>
           <p class="intro-p">
             i work on different kinds of projects to build all kinds of
@@ -88,6 +97,16 @@
             welfare. When I'm not coding or pushing pixels, you'll find me
             gaming or exploring new tech.
           </p>
+
+          <!-- Hire Me Button -->
+          <div class="hire-me-container">
+            <a href="contact.html" class="hire-me-button">
+              <span class="hire-text">hire me</span>
+              <span class="hire-icon">
+                <i class="fas fa-handshake"></i>
+              </span>
+            </a>
+          </div>
 
           <!-- Scroll indicator remains the same -->
           <div class="scroll-indicator">
