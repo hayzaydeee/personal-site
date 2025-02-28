@@ -9,5 +9,72 @@
   opacity: 1;
   pointer-events: none; /* Don't block clicks */
   animation: revealBackground 2s ease-in-out forwards;
-  animation-delay: 14s; /* Wait 15 seconds before starting fade */
+  animation-delay: 14s; /* Wait 14 seconds before starting fade */
+}
+
+/* Adjust card backgrounds based on theme */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-overlay);
+}
+
+/* Update navbar background for dark theme */
+body.dark-mode .navbar {
+  backdrop-filter: blur(12px) saturate(1.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+/* Update other elements that might need theme changes */
+body:not(.dark-mode) .modal-content {
+  background: var(--bg-modal);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Update other elements that might need theme changes */
+body.dark-mode .modal-content {
+  background: var(--bg-modal);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure the gradient works in light mode */
+body:not(.dark-mode).grad-bg {
+  background: var(--bg-primary);
+  background-size: 600% 600%;
+  animation: gradient 26s ease infinite;
+}
+
+/* Make sure dark mode has its own background */
+body.dark-mode.grad-bg {
+  background: var(--bg-primary);
+  background-size: 600% 600%;
+  animation: gradient 26s ease infinite;
+}
+
+/* Additional dark mode specific styling */
+body.dark-mode .experience-level {
+  background: linear-gradient(
+    90deg,
+    rgba(187, 134, 252, 0.5),
+    rgba(187, 134, 252, 0.8)
+  );
+}
+
+body.dark-mode .section-heading:after {
+  background: var(--primary-color);
+}
+
+body.dark-mode .percent-indicator {
+  color: var(--primary-color);
+  background: rgba(18, 18, 18, 0.8);
+}
+
+body.dark-mode .brand a {
+  color: var(--text-primary);
+}
+
+body.dark-mode .scroll-text,
+body.dark-mode .scroll-arrow {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }

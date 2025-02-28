@@ -86,7 +86,6 @@
     right: 0;
     top: -20px;
     font-size: 0.75rem;
-    color: var(--primary-color);
     opacity: 0;
     transform: translateY(5px);
     transition: opacity 0.3s ease, transform 0.3s ease;

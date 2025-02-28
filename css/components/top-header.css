@@ -1,0 +1,161 @@
+/* Top navigation header */
+.top-header {
+  opacity: 0; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 990; /* Below individual elements but above content */
+  
+  /* Initially transparent background with no shadow */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  
+  /* Smooth transitions for scrolling effect */
+  transition: background-color 0.3s ease, 
+              backdrop-filter 0.3s ease, 
+              -webkit-backdrop-filter 0.3s ease,
+              box-shadow 0.3s ease,
+              transform 0.4s ease,
+              opacity 0.4s ease;
+}
+
+/* Scrolled state styles */
+.top-header.scrolled {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Theme-specific background colors (only when scrolled) */
+body.dark-mode .top-header.scrolled {
+  background: rgba(18, 18, 24, 0.85);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+body:not(.dark-mode) .top-header.scrolled {
+  background: rgba(0, 105, 124, 0.85); /* Match your light theme */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Create areas for left, center, right elements */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between theme toggle and hamburger */
+}
+
+/* Brand adjustments */
+.brand {
+  position: static !important; /* Override fixed positioning */
+  left: auto;
+  top: auto;
+  margin: 0;
+  opacity: 1 !important; /* Ensure it's visible */
+  transform: none !important; /* Remove any transform */
+}
+
+.brand a {
+  font-size: 1.2rem; /* Slightly smaller than original */
+  display: block; /* Ensure clickable area */
+}
+
+/* Theme toggle adjustments */
+.theme-toggle {
+  position: static !important; /* Override fixed positioning */
+  right: auto;
+  top: auto;
+  margin: 0;
+  width: 36px; /* Match hamburger size */
+  height: 36px;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* Hamburger styling */
+.hamburger-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger {
+  position: static;
+  right: auto;
+  top: auto;
+  margin: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Delayed reveal logic for the entire header */
+@media (min-width: 1025px) {
+  .top-header {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none; /* Prevent interactions with invisible header */
+    transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .top-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all; /* Restore interactions */
+  }
+  
+  .top-header.delayed-reveal {
+    animation: headerReveal 0.8s ease forwards;
+    animation-delay: 14s; /* Match other reveal times */
+  }
+  
+  @keyframes headerReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+  }
+
+  .hamburger-container {
+    display: none; /* Hide completely on desktop */
+  }
+  
+  /* Adjust right side spacing without hamburger */
+  .header-right {
+    gap: 0; /* Remove gap since there's only one element now */
+  }
+}
+
+/* Ensure hamburger is visible on mobile */
+@media (max-width: 1024px) {
+  .top-header {
+    height: 50px;
+    padding: 0 15px;
+  }
+
+  .hamburger-container {
+    display: flex; /* Ensure it's visible on mobile */
+  }
+}

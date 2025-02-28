@@ -17,98 +17,129 @@
     />
 
     <!-- Favicon links -->
-    <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
-
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="media/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="media/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="media/favicon-16x16.png"
+    />
   </head>
   <body class="grad-bg">
-    <!-- Brand name above navbar -->
-    <div class="brand">
-      <a href="index.html">hayzaydee</a>
-    </div>
-    <main>
-      <!-- Hidden checkbox for menu toggle -->
-      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
-      <!-- Label for checkbox with hamburger icon -->
-      <label for="menu-toggle">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+    <!-- Top header that contains brand, theme toggle, and hamburger -->
+    <header class="top-header">
+      <div class="header-left">
+        <!-- Brand name -->
+        <div class="brand">
+          <a href="index.html">hayzaydee</a>
         </div>
-      </label>
+      </div>
+      <div class="header-right">
+        <!-- Theme toggle will be inserted here by JavaScript -->
+        <!-- Hamburger menu toggle -->
+        <label for="menu-toggle" class="hamburger-container">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </label>
+      </div>
+    </header>
 
-      <!-- Overlay for mobile that also closes menu when clicked -->
-      <label for="menu-toggle" class="overlay"></label>
+    <!-- Hidden checkbox for menu toggle -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
-      <!-- Floating Navbar (now without logo) -->
-      <nav class="navbar" id="navbar">
-        <ul class="menu">
-          <li><a href="index.html">home</a></li>
-          <li><a href="work.html" class="active">work</a></li>
-          <li><a href="about.html">about</a></li>
-          <li><a href="contact.html">contact</a></li>
-          <li><a href="fun.html">fun</a></li>
-        </ul>
-        <a href="" class="resume-btn" id="resume-btn">résumé</a>
-      </nav>
+    <!-- Overlay for mobile that also closes menu when clicked -->
+    <label for="menu-toggle" class="overlay"></label>
 
-      <!-- Main Content -->
-      <div class="main-content">
-        <h3 class="intro-sub">Work</h3>
-        
-        <div class="timeline-container">
-          <div class="timeline">
-            <!-- Timeline Item 1 -->
-            <div class="timeline-item left">
-              <div class="timeline-content">
-                <div class="timeline-date">2023 - Present</div>
-                <h3>Senior Web Developer</h3>
-                <h4>Company Name</h4>
-                <p>Led frontend development for multiple client projects using React and Next.js. Implemented responsive designs and improved site performance by 40%.</p>
-                <div class="skills">
-                  <span>React</span>
-                  <span>Next.js</span>
-                  <span>TypeScript</span>
-                </div>
+    <!-- Floating Navbar (now without logo) -->
+    <nav class="navbar" id="navbar">
+      <ul class="menu">
+        <li><a href="index.html">home</a></li>
+        <li><a href="work.html" class="active">work</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="contact.html">contact</a></li>
+        <li><a href="fun.html">fun</a></li>
+      </ul>
+      <a href="" class="resume-btn" id="resume-btn">résumé</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h3 class="intro-sub">Work</h3>
+
+      <div class="timeline-container">
+        <div class="timeline">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <div class="timeline-date">2023 - Present</div>
+              <h3>Senior Web Developer</h3>
+              <h4>Company Name</h4>
+              <p>
+                Led frontend development for multiple client projects using
+                React and Next.js. Implemented responsive designs and improved
+                site performance by 40%.
+              </p>
+              <div class="skills">
+                <span>React</span>
+                <span>Next.js</span>
+                <span>TypeScript</span>
               </div>
             </div>
+          </div>
 
-            <!-- Timeline Item 2 -->
-            <div class="timeline-item right">
-              <div class="timeline-content">
-                <div class="timeline-date">2021 - 2023</div>
-                <h3>Web Developer</h3>
-                <h4>Previous Company</h4>
-                <p>Developed and maintained client websites. Collaborated with design team to implement responsive layouts and interactive features.</p>
-                <div class="skills">
-                  <span>JavaScript</span>
-                  <span>CSS3</span>
-                  <span>HTML5</span>
-                </div>
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <div class="timeline-date">2021 - 2023</div>
+              <h3>Web Developer</h3>
+              <h4>Previous Company</h4>
+              <p>
+                Developed and maintained client websites. Collaborated with
+                design team to implement responsive layouts and interactive
+                features.
+              </p>
+              <div class="skills">
+                <span>JavaScript</span>
+                <span>CSS3</span>
+                <span>HTML5</span>
               </div>
             </div>
+          </div>
 
-            <!-- Timeline Item 3 -->
-            <div class="timeline-item left">
-              <div class="timeline-content">
-                <div class="timeline-date">2019 - 2021</div>
-                <h3>Junior Developer</h3>
-                <h4>Startup Inc.</h4>
-                <p>Started as an intern and grew into a full-time role. Assisted senior developers and gained experience in full-stack development.</p>
-                <div class="skills">
-                  <span>HTML</span>
-                  <span>CSS</span>
-                  <span>JavaScript</span>
-                </div>
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <div class="timeline-date">2019 - 2021</div>
+              <h3>Junior Developer</h3>
+              <h4>Startup Inc.</h4>
+              <p>
+                Started as an intern and grew into a full-time role. Assisted
+                senior developers and gained experience in full-stack
+                development.
+              </p>
+              <div class="skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
 
     <footer>
       <hr />
@@ -121,15 +152,6 @@
       <i class="fas fa-arrow-up"></i>
     </a>
 
-    <div id="resume-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>my résumé</h2>
-        <div class="resume-container">
-          <iframe src="media/Divine's CVV.pdf" frameborder="0"></iframe>
-        </div>
-      </div>
-    </div>
 
     <script src="main.js"></script>
   </body>

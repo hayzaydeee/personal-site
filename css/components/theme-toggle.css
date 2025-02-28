@@ -1,0 +1,109 @@
+/* Theme Toggle Styles */
+.theme-toggle {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  z-index: 1001; /* Same as navbar for importance */
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Position based on viewport */
+@media (min-width: 1025px) {
+  .theme-toggle {
+    top: 20px;
+    right: 20px;
+    /* Start invisible and animate in after navbar */
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  
+  .theme-toggle.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .theme-toggle.delayed-reveal {
+    animation: themeToggleReveal 0.5s ease forwards;
+    animation-delay: 14.7s; /* Appear slightly after navbar */
+  }
+  
+  @keyframes themeToggleReveal {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .theme-toggle {
+    top: 15px;
+    right: 65px; /* Space to the left of hamburger */
+    opacity: 1; /* Always visible on mobile */
+  }
+}
+
+/* Hover effect */
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Active state */
+.theme-toggle:active {
+  transform: scale(0.94);
+}
+
+/* Sun and moon icons */
+.theme-toggle .icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  position: absolute;
+}
+
+.theme-toggle .sun-icon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+.theme-toggle .moon-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* Icon state when in dark mode */
+body.dark-mode .theme-toggle .sun-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+body.dark-mode .theme-toggle .moon-icon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Icon SVGs */
+.sun-icon {
+  color: #FFD700;
+  stroke: #FFD700;
+}
+
+.moon-icon {
+  color: #A9DEF9;
+  stroke: #A9DEF9;
+}

@@ -2,69 +2,68 @@
 
 /* Modal container */
 .modal {
-  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
-  backdrop-filter: blur(5px);
+  z-index: 10000;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.modal:target {
+.modal.active {
   opacity: 1;
   visibility: visible;
 }
 
 /* Modal content */
 .modal-content {
-  background-color: #047692;
-  margin: auto;
-  padding: 25px;
-  border: 1px solid #087E8B;
+  background: var(--bg-modal);
+  padding: 30px;
   border-radius: 10px;
   width: 80%;
   max-width: 800px;
   max-height: 90vh;
+  overflow-y: auto;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transform: scale(0.7);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-20px);
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.modal:target .modal-content {
-  transform: scale(1);
+.modal.active .modal-content {
+  transform: translateY(0);
   opacity: 1;
 }
 
 /* Close button */
 .close-modal {
-  color: #8892b0;
-  float: right;
+  position: absolute;
+  top: 10px;
+  right: 15px;
   font-size: 28px;
-  font-weight: bold;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: color 0.2s;
 }
 
 .close-modal:hover {
-  color: #ff6b6b;
-  transform: rotate(90deg);
+  color: var(--primary-color);
 }
 
 /* Modal heading */
 .modal-content h2 {
   margin-top: 10px;
   margin-bottom: 20px;
-  color: #ccd6f6;
+  color: var(--primary-color);
   font-family: 'Preahvihear', sans-serif;
   font-size: 1.5rem;
 }
@@ -81,15 +80,6 @@
   width: 100%;
   height: 100%;
   border: none;
-  background-color: #fff;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
-}
-
-.modal:target .resume-container iframe {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Modal actions section (for buttons) */
@@ -102,7 +92,7 @@
 @media (max-width: 768px) {
   .modal-content {
     width: 95%;
-    padding: 20px 15px;
+    padding: 20px;
   }
   
   .resume-container {

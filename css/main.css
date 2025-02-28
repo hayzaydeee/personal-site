@@ -8,8 +8,10 @@
 @import "components/footer.css";
 @import "components/modal.css";
 @import "components/navbar.css";
+@import 'components/top-header.css'; /* Add top-header import */
 @import "components/sections.css";
 @import 'components/skills.css';
+@import 'components/theme-toggle.css'; /* Add theme toggle import */
 
 /* page-specific styles */
 @import 'pages/home.css';
@@ -18,13 +20,14 @@
 @import 'pages/contact.css';
 @import 'pages/fun.css';
 
-
 /* Global styles */
 body {
   font-family: var(--font-main);
   min-height: 100vh;
   opacity: 0;
   transition: opacity 0.4s ease;
+  color: var(--text-primary); /* Add text color based on theme */
+  background: var(--bg-solid); /* Solid background fallback */
 }
 
 body.grad-bg {
@@ -37,6 +40,11 @@ body.grad-bg {
 
 body.loaded {
   opacity: 1;
+}
+
+/* Theme transition effect */
+body * {
+  transition: var(--theme-transition);
 }
 
 .main-content {
@@ -69,15 +77,6 @@ a:hover {
   padding: 0 var(--space-md);
 }
 
-/* Minimal styling for section intros */
-.section-intro {
-  color: var(--text-tertiary);
-  margin-bottom: 35px;
-  max-width: 600px;
-  line-height: 1.6;
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
 
 /* Media queries for global elements */
 @media (max-width: 480px) {

@@ -17,50 +17,69 @@
     />
 
     <!-- Favicon links -->
-    <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
-
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="media/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="media/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="media/favicon-16x16.png"
+    />
   </head>
+
   <body class="grad-bg">
-    <!-- Brand name above navbar -->
-    <div class="brand">
-      <a href="index.html">hayzaydee</a>
-    </div>
-    <main>
-      <!-- Hidden checkbox for menu toggle -->
-      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
-      <!-- Label for checkbox with hamburger icon -->
-      <label for="menu-toggle">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+    <!-- Top header that contains brand, theme toggle, and hamburger -->
+    <header class="top-header">
+      <div class="header-left">
+        <!-- Brand name -->
+        <div class="brand">
+          <a href="index.html">hayzaydee</a>
         </div>
-      </label>
-
-      <!-- Overlay for mobile that also closes menu when clicked -->
-      <label for="menu-toggle" class="overlay"></label>
-
-      <!-- Floating Navbar (now without logo) -->
-      <nav class="navbar" id="navbar">
-        <ul class="menu">
-          <li><a href="index.html">home</a></li>
-          <li><a href="work.html">work</a></li>
-          <li><a href="about.html">about</a></li>
-          <li><a href="contact.html">contact</a></li>
-          <li><a href="fun.html" class="active">fun</a></li>
-        </ul>
-        <a href="" class="resume-btn" id="resume-btn">résumé</a>
-      </nav>
-
-      <!-- Main Content -->
-      <div class="main-content">
-        <h3 class="intro-sub">Video Demo</h3>
-
       </div>
-    </main>
+      <div class="header-right">
+        <!-- Theme toggle will be inserted here by JavaScript -->
+        <!-- Hamburger menu toggle -->
+        <label for="menu-toggle" class="hamburger-container">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </label>
+      </div>
+    </header>
+
+    <!-- Hidden checkbox for menu toggle -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+
+    <!-- Overlay for mobile that also closes menu when clicked -->
+    <label for="menu-toggle" class="overlay"></label>
+
+    <!-- Floating Navbar (now without logo) -->
+    <nav class="navbar" id="navbar">
+      <ul class="menu">
+        <li><a href="index.html">home</a></li>
+        <li><a href="work.html">work</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="contact.html">contact</a></li>
+        <li><a href="fun.html" class="active">fun</a></li>
+      </ul>
+      <a href="" class="resume-btn" id="resume-btn">résumé</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h3 class="intro-sub">Video Demo</h3>
+    </div>
 
     <footer>
       <hr />
@@ -70,16 +89,6 @@
     <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
       <i class="fas fa-arrow-up"></i>
     </a>
-
-    <div id="resume-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>my résumé</h2>
-        <div class="resume-container">
-          <iframe src="media/Divine's CVV.pdf" frameborder="0"></iframe>
-        </div>
-      </div>
-    </div>
 
     <script src="main.js"></script>
   </body>

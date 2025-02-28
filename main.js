@@ -205,28 +205,71 @@ document.addEventListener("DOMContentLoaded", function () {
   checkCTAVisibility();
 });
 
-// Resume Modal Functionality
+// Resume Modal Functionality - Fix to prevent page reload
 document.addEventListener("DOMContentLoaded", function () {
-  // Modal functionality
-  const modal = document.getElementById("resume-modal");
-  const resumeBtn = document.getElementById("resume-btn");
-  const closeBtn = document.querySelector(".close-modal");
+  const resumeBtns = document.querySelectorAll(".resume-btn");
 
-  // Open modal with animation when resume button is clicked
-  if (resumeBtn) {
-    resumeBtn.addEventListener("click", function (e) {
-      // Remove the e.preventDefault() to allow the hash change
-      // This will trigger the :target selector in CSS
+  // First, check if we're on a page with the resume button
+  if (resumeBtns.length === 0) return;
 
-      // No need to manually set display: flex, the CSS will handle it
+  // Create or find the modal
+  let modal = document.getElementById("resume-modal");
+
+  // If modal doesn't exist or is commented out, create it dynamically
+  if (!modal) {
+    console.log("Creating resume modal dynamically");
+
+    // Create modal elements
+    modal = document.createElement("div");
+    modal.id = "resume-modal";
+    modal.className = "modal";
+
+    const modalContent = document.createElement("div");
+    modalContent.className = "modal-content";
+
+    const closeBtn = document.createElement("span");
+    closeBtn.className = "close-modal";
+    closeBtn.innerHTML = "&times;";
+
+    const modalTitle = document.createElement("h2");
+    modalTitle.textContent = "my résumé";
+
+    const resumeContainer = document.createElement("div");
+    resumeContainer.className = "resume-container";
+
+    // Create iframe for PDF
+    const iframe = document.createElement("iframe");
+    iframe.src = "media/Divine's CVV.pdf";
+    iframe.setAttribute("frameborder", "0");
+
+    // Assemble modal
+    resumeContainer.appendChild(iframe);
+    modalContent.appendChild(closeBtn);
+    modalContent.appendChild(modalTitle);
+    modalContent.appendChild(resumeContainer);
+    modal.appendChild(modalContent);
+
+    // Add to DOM
+    document.body.appendChild(modal);
+  }
+
+  // Now we're sure we have a modal element
+  const closeBtn = modal.querySelector(".close-modal");
+
+  // Open modal with animation - PREVENT DEFAULT to avoid hash navigation
+  resumeBtns.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault(); // Critical - prevent default hash behavior
+
+      // Show modal with CSS
+      modal.classList.add("active");
       document.body.style.overflow = "hidden"; // Prevent scrolling
     });
-  }
+  });
 
   // Close modal with animation
   function closeModal() {
-    // Change the URL hash to remove the target
-    window.location.hash = "";
+    modal.classList.remove("active");
     document.body.style.overflow = ""; // Restore scrolling
   }
 
@@ -247,10 +290,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Close with ESC key
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && modal.classList.contains("show")) {
+    if (e.key === "Escape" && modal.classList.contains("active")) {
       closeModal();
     }
   });
+
+  // Check if we should open modal based on hash (e.g., direct link)
+  if (window.location.hash === "#resume-modal") {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevent scrolling
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -319,23 +368,28 @@ document.addEventListener("DOMContentLoaded", function () {
 // }
 
 // Typing animation for the role text - plays only once and stops on "problem solver"
-document.addEventListener('DOMContentLoaded', function() {
-  const roles = ['web developer', 'mobile developer', 'UI designer', 'problem solver.'];
-  const highlightText = document.querySelector('.highlight-text');
+document.addEventListener("DOMContentLoaded", function () {
+  const roles = [
+    "web developer",
+    "mobile developer",
+    "UI designer",
+    "problem solver.",
+  ];
+  const highlightText = document.querySelector(".highlight-text");
   let roleIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
   let typingSpeed = 100;
-  
+
   // Make sure we have the highlight-text element
   if (!highlightText) return;
-  
+
   // Start with empty text
-  highlightText.textContent = '';
-  
+  highlightText.textContent = "";
+
   function typeRole() {
     const currentRole = roles[roleIndex];
-    
+
     if (isDeleting) {
       // Deleting text
       highlightText.textContent = currentRole.substring(0, charIndex - 1);
@@ -354,10 +408,10 @@ document.addEventListener('DOMContentLoaded', function() {
       if (roleIndex === roles.length - 1) {
         return; // Stop the animation completely
       }
-      
+
       isDeleting = true;
       typingSpeed = 1500; // Pause at the end of the word
-    } 
+    }
     // If finished deleting the word
     else if (isDeleting && charIndex === 0) {
       isDeleting = false;
@@ -368,55 +422,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // Continue animation until we reach the final state
     setTimeout(typeRole, typingSpeed);
   }
-  
+
   // Start the typing animation with a small initial delay
   setTimeout(typeRole, 800);
 });
 
-
 // Background and navbar reveal animation
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Get navbar and brand elements
-  const navbar = document.querySelector('.navbar');
-  const brand = document.querySelector('.brand');
-  const scrollIndicator = document.querySelector('.scroll-indicator');
-  const menuToggle = document.getElementById('menu-toggle');
-  
+  const navbar = document.querySelector(".navbar");
+  const brand = document.querySelector(".brand");
+  const scrollIndicator = document.querySelector(".scroll-indicator");
+  const topHeader = document.querySelector(".top-header"); // Add this line
+  const menuToggle = document.getElementById("menu-toggle");
+
   // Helper function to check for mobile
   function isMobile() {
     return window.innerWidth <= 1024;
   }
-  
+
   // Function to reset menu state (important for page transitions)
   function resetMobileMenu() {
     if (menuToggle && isMobile()) {
       menuToggle.checked = false;
     }
   }
-  
+
   // Handle viewport changes
-  window.addEventListener('resize', function() {
+  window.addEventListener("resize", function () {
     // If switching between mobile/desktop, ensure menu is closed
     resetMobileMenu();
   });
-  
+
   // Check if this is the first visit in this session
-  if (!sessionStorage.getItem('backgroundRevealed')) {
+  if (!sessionStorage.getItem("backgroundRevealed")) {
     console.log("First visit - setting up animations");
-    
+
     // Create dark overlay
-    const darkOverlay = document.createElement('div');
-    darkOverlay.className = 'dark-overlay';
+    const darkOverlay = document.createElement("div");
+    darkOverlay.className = "dark-overlay";
     document.body.appendChild(darkOverlay);
-    
+
     // Create progress indicator
-    const progressBar = document.createElement('div');
-    progressBar.className = 'reveal-progress';
+    const progressBar = document.createElement("div");
+    progressBar.className = "reveal-progress";
     document.body.appendChild(progressBar);
-    
+
     // Add animation classes based on device
     if (navbar && !isMobile()) {
-      navbar.classList.add('delayed-reveal');
+      navbar.classList.add("delayed-reveal");
       console.log("Added delayed-reveal to navbar");
     } else if (navbar && isMobile()) {
       // On mobile, we'll handle differently
@@ -424,48 +478,158 @@ document.addEventListener("DOMContentLoaded", function() {
       // Reset mobile menu to ensure clean state
       resetMobileMenu();
     }
-    
+
     if (brand) {
       if (!isMobile()) {
-        brand.classList.add('delayed-reveal');
+        brand.classList.add("delayed-reveal");
         console.log("Added delayed-reveal to brand");
       } else {
-        brand.classList.add('visible');
+        brand.classList.add("visible");
         console.log("Mobile detected - added visible to brand");
       }
     }
-    
+
     // Add delayed reveal to scroll indicator on both mobile and desktop
     if (scrollIndicator) {
-      scrollIndicator.classList.add('delayed-reveal');
+      scrollIndicator.classList.add("delayed-reveal");
       console.log("Added delayed-reveal to scroll indicator");
     }
     
+    // Make sure top header animation is synchronized
+    if (topHeader && !isMobile()) {
+      // Force opacity to 0 initially
+      topHeader.style.opacity = "0";
+      setTimeout(() => {
+        topHeader.classList.add("delayed-reveal");
+        console.log("Added delayed-reveal to top header");
+      }, 50);
+    }
+
     // Handle progress bar cleanup
     setTimeout(() => {
       console.log("Animation completed - cleaning up progress bar");
-      progressBar.style.opacity = '0';
+      progressBar.style.opacity = "0";
       setTimeout(() => {
         progressBar.remove();
       }, 1000);
     }, 15000);
-    
+
     // Mark that we've shown the effect
-    sessionStorage.setItem('backgroundRevealed', 'true');
+    sessionStorage.setItem("backgroundRevealed", "true");
   } else {
     console.log("Return visit - showing elements immediately");
     // For returning visitors, show elements immediately
     if (navbar && !isMobile()) {
-      navbar.classList.add('visible');
+      navbar.classList.add("visible");
     }
-    
+
     if (brand && !isMobile()) {
-      brand.classList.add('visible');
+      brand.classList.add("visible");
     }
-    
+
     // Make scroll indicator visible for return visitors
     if (scrollIndicator) {
-      scrollIndicator.classList.add('visible');
+      scrollIndicator.classList.add("visible");
+    }
+    
+    // Show header immediately for return visitors
+    if (topHeader && !isMobile()) {
+      topHeader.classList.add("visible");
     }
   }
+});
+
+// Theme toggle functionality
+document.addEventListener("DOMContentLoaded", function() {
+  // Create the toggle button
+  const themeToggle = document.createElement("button");
+  themeToggle.className = "theme-toggle";
+  themeToggle.setAttribute("aria-label", "Toggle dark/light mode");
+  themeToggle.innerHTML = `
+    <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  `;
+  
+  // Find the header-right element to append the toggle to
+  const headerRight = document.querySelector('.header-right');
+  if (headerRight) {
+    // Insert before the hamburger
+    headerRight.insertBefore(themeToggle, headerRight.firstChild);
+  } else {
+    // Fallback to body if header-right doesn't exist yet
+    document.body.appendChild(themeToggle);
+  }
+  
+  // Get the top header for animation
+  const topHeader = document.querySelector('.top-header');
+  
+  // Helper function to check for mobile
+  function isMobile() {
+    return window.innerWidth <= 1024;
+  }
+  
+  // Check for saved theme preference
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const savedTheme = localStorage.getItem("theme");
+  
+  // Set initial theme
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  } else if (savedTheme === "light" || !prefersDarkScheme.matches) {
+    document.body.classList.remove("dark-mode");
+  } else if (prefersDarkScheme.matches) {
+    document.body.classList.add("dark-mode");
+  }
+  
+  // Apply animation class to header based on first visit
+  if (topHeader) {
+    if (!sessionStorage.getItem('backgroundRevealed') && !isMobile()) {
+      topHeader.classList.add('delayed-reveal');
+    } else if (!isMobile()) {
+      topHeader.classList.add('visible');
+    }
+    // On mobile, header is always visible without animation
+    
+    // Set initial header background state based on scroll position
+    updateHeaderOnScroll();
+    
+    // Add scroll event listener to update header background
+    window.addEventListener('scroll', updateHeaderOnScroll);
+    
+    // Function to update header based on scroll position
+    function updateHeaderOnScroll() {
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Add or remove scrolled class based on 50px threshold
+      if (scrollPosition > 50) {
+        topHeader.classList.add('scrolled');
+      } else {
+        topHeader.classList.remove('scrolled');
+      }
+    }
+
+  }
+  
+  // Toggle theme function
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
 });
