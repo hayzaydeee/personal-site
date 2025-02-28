@@ -153,9 +153,88 @@ body:not(.dark-mode) .top-header.scrolled {
   .top-header {
     height: 50px;
     padding: 0 15px;
+    opacity: 1 !important; /* Force visibility on mobile */
+    transform: none !important; /* No transforms on mobile */
+    pointer-events: all !important; /* Always interactive on mobile */
+    /* Remove any animations that might hide it */
+    animation: none !important;
   }
 
   .hamburger-container {
     display: flex; /* Ensure it's visible on mobile */
+  }
+
+  /* Ensure header right content is properly spaced */
+  .header-right {
+    gap: 15px;
+  }
+}
+
+/* Mobile-specific header styles - Always visible on mobile */
+@media (max-width: 1024px) {
+  .top-header {
+    height: 50px;
+    padding: 0 15px;
+    opacity: 1 !important; /* Force visibility on mobile */
+    transform: none !important; /* No transforms on mobile */
+    pointer-events: all !important; /* Always interactive on mobile */
+    animation: none !important; /* No animations on mobile */
+  }
+  
+  /* Ensure hamburger is visible on mobile */
+  .hamburger-container {
+    display: flex;
+  }
+  
+  /* Ensure header right content is properly spaced */
+  .header-right {
+    gap: 15px;
+  }
+}
+
+/* Desktop header styles */
+@media (min-width: 1025px) {
+  /* Hide hamburger menu on desktop */
+  .hamburger-container {
+    display: none;
+  }
+  
+  /* Adjust right side spacing without hamburger */
+  .header-right {
+    gap: 0;
+  }
+  
+  /* Initial state for animations */
+  .top-header {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Delayed reveal animation */
+  .top-header.delayed-reveal {
+    animation: headerReveal 0.8s ease forwards;
+    animation-delay: 14s; /* Match other reveal times */
+  }
+  
+  /* Animation for when visible without delay (return visits) */
+  .top-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  
+  @keyframes headerReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
   }
 }

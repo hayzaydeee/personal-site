@@ -55,7 +55,6 @@ body * {
 /* Common heading styles */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-accent);
-  margin-bottom: var(--space-md);
 }
 
 /* Link styles */

@@ -45,7 +45,6 @@
   font-family: "Preahvihear", cursive;
   text-align: center;
   font-size: 1.8rem;
-  margin-bottom: 0.5rem;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease forwards;
@@ -64,21 +63,21 @@
   animation: fadeInUp 0.8s ease forwards 14s;
 }
 
-/* Main title styling */
 .intro {
   font-family: "Preahvihear", sans-serif;
   text-align: center;
   font-size: 4.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.2;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.8s ease forwards 0.3s;
+  animation: fadeInUp 0.8s ease forwards 1s;
 }
 
 .intro .regular-text {
   font-style: italic;
   font-weight: 400;
+  font-size: 3.2rem;
 }
 
 .intro .highlight-text {
@@ -284,100 +283,6 @@
   margin: 0 auto;
 }
 
-/* The timeline center line */
-.timeline::after {
-  content: "";
-  position: absolute;
-  width: 4px;
-  background-color: rgba(255, 255, 255, 0.2);
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -2px;
-  border-radius: 2px;
-}
-
-/* Timeline items */
-.timeline-item {
-  padding: 10px 40px;
-  position: relative;
-  width: 50%;
-  box-sizing: border-box;
-}
-
-/* Circles on timeline */
-.timeline-item::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background-color: white;
-  border-radius: 50%;
-  top: 22px;
-  z-index: 1;
-}
-
-/* Left items */
-.left {
-  left: 0;
-}
-
-.left::after {
-  right: -8px;
-}
-
-/* Right items */
-.right {
-  left: 50%;
-}
-
-.right::after {
-  left: -8px;
-}
-
-/* Content styling */
-.timeline-content {
-  padding: 20px 25px;
-  background: #ffffff12;
-  border: 1px solid #ffffff1a;
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.timeline-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.timeline-date {
-  font-weight: bold;
-  color: #64ffda;
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-}
-
-.timeline-content h3 {
-  margin: 0 0 5px 0;
-  color: white;
-  font-size: 1.2rem;
-}
-
-.timeline-content h4 {
-  margin: 0 0 15px 0;
-  color: #ccd6f6;
-  font-weight: normal;
-  font-size: 1rem;
-}
-
-.timeline-content p {
-  margin: 0 0 15px 0;
-  line-height: 1.5;
-  color: #a8b2d1;
-  font-size: 0.95rem;
-}
-
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -561,7 +466,7 @@
   }
 }
 
-/* Page transition overlay */
+/* Page transition overlay - Updated for theme-specific colors */
 .page-transition-overlay {
   position: fixed;
   top: 0;
@@ -573,12 +478,7 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  background: rgba(
-    10,
-    47,
-    38,
-    0
-  ); /* Green tinted background - start transparent */
+  background: rgba(10, 47, 38, 0); /* Green tinted background - start transparent (light mode) */
   opacity: 0;
   visibility: hidden; /* Make sure it's hidden by default */
   transition: opacity 0.5s ease, background-color 0.6s ease;
@@ -587,8 +487,17 @@
 .page-transition-overlay.visible {
   opacity: 1;
   visibility: visible; /* Make visible when needed */
-  background: rgba(10, 47, 38, 0.85); /* Green tinted background with opacity */
+  background: rgba(10, 47, 38, 0.85); /* Green tinted background with opacity (light mode) */
   backdrop-filter: blur(5px);
+}
+
+/* Dark mode version - Purple tint */
+body.dark-mode .page-transition-overlay {
+  background: rgba(45, 10, 80, 0); /* Purple tinted background - start transparent (dark mode) */
+}
+
+body.dark-mode .page-transition-overlay.visible {
+  background: rgba(13, 1, 26, 0.85); /* Purple tinted background with opacity (dark mode) */
 }
 
 .transition-page-name {
